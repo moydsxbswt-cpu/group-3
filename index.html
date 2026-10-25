@@ -1,54 +1,298 @@
 <!DOCTYPE html>
-<html lang="ar">
+<html lang="ar" dir="rtl">
 <head>
     <meta charset="UTF-8">
-    <title>النادي الأهلي السعودي - Group 3</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>النادي الأهلي السعودي - Group 3 Project</title>
     <style>
-        body {
-            font-family: Tahoma, sans-serif;
-            background-color: #f4f6f9;
-            color: #333;
-            text-align: center;
-            direction: rtl;
-            padding: 20px;
+        :root {
+            --primary-color: #006837;
+            --secondary-color: #004225;
+            --accent-color: #d4af37;
+            --bg-color: #f0f4f1;
+            --card-bg: #ffffff;
+            --text-color: #2c3e50;
         }
-        h1 {
-            color: #008080;
-        }
-        .container {
-            background: #fff;
-            padding: 20px;
-            border-radius: 10px;
-            max-width: 600px;
-            margin: auto;
-            box-shadow: 0px 0px 10px rgba(0,0,0,0.1);
-        }
-        ul {
-            list-style-type: none;
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
             padding: 0;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
         }
-        li {
-            background: #eef2f7;
-            margin: 8px 0;
-            padding: 10px;
-            border-radius: 5px;
+
+        body {
+            background-color: var(--bg-color);
+            color: var(--text-color);
+            line-height: 1.6;
+        }
+
+        /* Header Navigation */
+        header {
+            background: linear-gradient(135deg, var(--secondary-color), var(--primary-color));
+            color: white;
+            padding: 1rem 2rem;
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo-container {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+        }
+
+        .logo-container img {
+            width: 50px;
+            height: auto;
+            filter: drop-shadow(0px 2px 4px rgba(0,0,0,0.3));
+        }
+
+        .logo-container h1 {
+            font-size: 1.5rem;
+            font-weight: 700;
+        }
+
+        nav ul {
+            display: flex;
+            list-style: none;
+            gap: 20px;
+        }
+
+        nav a {
+            color: white;
+            text-decoration: none;
+            font-weight: 600;
+            padding: 8px 16px;
+            border-radius: 20px;
+            transition: all 0.3s ease;
+        }
+
+        nav a:hover {
+            background-color: var(--accent-color);
+            color: #000;
+        }
+
+        /* Hero Section */
+        .hero {
+            background: linear-gradient(rgba(0, 66, 37, 0.85), rgba(0, 104, 55, 0.85)), 
+                        url('https://upload.wikimedia.org/wikipedia/en/b/b3/Al_Ahli_Saudi_FC_logo.svg') no-repeat center/contain;
+            color: white;
+            text-align: center;
+            padding: 60px 20px;
+            margin-bottom: 30px;
+        }
+
+        .hero h2 {
+            font-size: 2.5rem;
+            margin-bottom: 10px;
+            color: var(--accent-color);
+        }
+
+        .hero p {
+            font-size: 1.2rem;
+            max-width: 700px;
+            margin: 0 auto;
+        }
+
+        /* Main Layout */
+        .container {
+            max-width: 1100px;
+            margin: 0 auto;
+            padding: 0 20px 40px;
+        }
+
+        .section-title {
+            text-align: center;
+            color: var(--primary-color);
+            margin: 40px 0 20px;
+            font-size: 1.8rem;
+            position: relative;
+        }
+
+        .section-title::after {
+            content: '';
+            display: block;
+            width: 60px;
+            height: 4px;
+            background-color: var(--accent-color);
+            margin: 8px auto 0;
+            border-radius: 2px;
+        }
+
+        /* Grid Cards for Trophies / Info */
+        .grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 20px;
+        }
+
+        .card {
+            background: var(--card-bg);
+            padding: 25px;
+            border-radius: 12px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.08);
+            border-top: 5px solid var(--primary-color);
+            text-align: center;
+            transition: transform 0.3s ease;
+        }
+
+        .card:hover {
+            transform: translateY(-5px);
+        }
+
+        .card-icon {
+            font-size: 2.5rem;
+            margin-bottom: 10px;
+        }
+
+        .card h3 {
+            color: var(--secondary-color);
+            margin-bottom: 10px;
+        }
+
+        /* Team Members Table Section */
+        .members-section {
+            background: white;
+            padding: 30px;
+            border-radius: 12px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.08);
+            margin-top: 30px;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 15px;
+        }
+
+        th, td {
+            padding: 12px 15px;
+            text-align: center;
+            border-bottom: 1px solid #ddd;
+        }
+
+        th {
+            background-color: var(--primary-color);
+            color: white;
+        }
+
+        tr:nth-child(even) {
+            background-color: #f9f9f9;
+        }
+
+        /* Footer */
+        footer {
+            background-color: var(--secondary-color);
+            color: white;
+            text-align: center;
+            padding: 20px;
+            margin-top: 40px;
+            font-size: 0.9rem;
         }
     </style>
 </head>
 <body>
+
+    <!-- Header & Nav -->
+    <header>
+        <div class="logo-container">
+            <img src="https://upload.wikimedia.org/wikipedia/en/b/b3/Al_Ahli_Saudi_FC_logo.svg" alt="شعار النادي الأهلي">
+            <h1>النادي الأهلي السعودي</h1>
+        </div>
+        <nav>
+            <ul>
+                <li><a href="#about">عن النادي</a></li>
+                <li><a href="#trophies">البطولات</a></li>
+                <li><a href="#group">فريق العمل</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <!-- Hero Banner -->
+    <section class="hero">
+        <h2>سفير الوطن - قلعة الكؤوس</h2>
+        <p>الموقع الرسمي المصغر للتكليف الجامعي لمادة السحابية والنظم المدمجة (DMD243)</p>
+    </section>
+
     <div class="container">
-        <h1>النادي الأهلي السعودي (الراقي)</h1>
-        <p>نبذة تعريفية: يُعد النادي الأهلي من أبرز الأندية الرياضية في المملكة العربية السعودية، ويحظى بشعبية جماهيرية واسعة وتاريخ عريق في مختلف الألعاب وخاصة كرة القدم.</p>
-        
-        <hr>
-        
-        <h3>معلومات المشروع (Group 3)</h3>
-        <p>مقرر: DMD243 Cloud Computing and Embedded Systems</p>
-        <ul>
-            <li>مؤيد طارق طبيقي (202603252)</li>
-            <li>عبدالله عبداللطيف (202602679)</li>
-            <li>محمد مساعد جعفري (202418537)</li>
-        </ul>
+
+        <!-- About Section -->
+        <section id="about">
+            <h2 class="section-title">نبذة عن الملكي</h2>
+            <div class="card" style="text-align: right;">
+                <p>تأسس النادي الأهلي السعودي في عام 1937م في مدينة جدة، ويُعد أحد أقطاب كرة القدم السعودية والعربية. يلقب بـ "الراقي" و "قلعة الكؤوس" نظير تتويجه التاريخي في مختلف الألعاب والبطولات المحلية والقارية.</p>
+            </div>
+        </section>
+
+        <!-- Trophies Section -->
+        <section id="trophies">
+            <h2 class="section-title">إنجازات وبطولات</h2>
+            <div class="grid">
+                <div class="card">
+                    <div class="card-icon">🏆</div>
+                    <h3>الدوري السعودي</h3>
+                    <p>حققه النادي الأهلي في عدة مواسم كروية تاريخية.</p>
+                </div>
+                <div class="card">
+                    <div class="card-icon">👑</div>
+                    <h3>كأس خادم الحرمين</h3>
+                    <p>صاحب الرقم القياسي والأكثر تتويجاً بكأس الملك.</p>
+                </div>
+                <div class="card">
+                    <div class="card-icon">🥇</div>
+                    <h3>البطولات العامة</h3>
+                    <p>أكثر من 1000 بطولة في جميع الألعاب والرياضات.</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Group Members Section -->
+        <section id="group">
+            <div class="members-section">
+                <h2 class="section-title" style="margin-top:0;">معلومات مشروع المجموعة (Group 3)</h2>
+                <p style="text-align: center; margin-bottom: 15px;">مقرر: <b>DMD243 Cloud Computing and Embedded Systems</b></p>
+                
+                <table>
+                    <thead>
+                        <tr>
+                            <th>اسم الطالب</th>
+                            <th>الرقم الجامعي</th>
+                            <th>الدور</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>مؤيد طارق طبيقي</td>
+                            <td>202603252</td>
+                            <td>مطور رئيسي (Developer)</td>
+                        </tr>
+                        <tr>
+                            <td>عبدالله عبداللطيف</td>
+                            <td>202602679</td>
+                            <td>عضو مجموعة</td>
+                        </tr>
+                        <tr>
+                            <td>محمد مساعد جعفري</td>
+                            <td>202418537</td>
+                            <td>عضو مجموعة</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </section>
+
     </div>
+
+    <!-- Footer -->
+    <footer>
+        <p>© 2026 جميع الحقوق محفوظة - مشروع DMD243 | GitHub Pages</p>
+    </footer>
+
 </body>
 </html>
